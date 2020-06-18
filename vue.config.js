@@ -1,7 +1,9 @@
+const BASE_URL = process.env.NODE_ENV === 'production' ? '/wx' : '/'
 module.exports = {
   outputDir: 'dist',   //build输出目录
   assetsDir: 'assets', //静态资源目录（js, css, img）
   lintOnSave: false, //是否开启eslint
+  publicPath: './',
   devServer: {
     open: false, //是否自动弹出浏览器页面
     host: "192.168.2.104",

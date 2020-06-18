@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
+let base = process.env.NODE_ENV === 'production' ? '/wx' : ''
+
 const routes = [
   {
     path: '/',
@@ -11,19 +13,20 @@ const routes = [
     component: Home
   },
   {
-    path: '/wx/bindjw',
-    name: 'Bindjw',
-    component: () => import('../views/wx/Bindjw')
+    path: '/bindjw',
+    name: 'bindjw',
+    component: () => import('../views/Bindjw')
   },
   {
     path: '/invoke',
-    name: 'Invoke',
+    name: 'submsg',
     component: () => import('../views/Invoke')
   }
 ]
 
 const router = new VueRouter({
   mode: 'history',
+  base,
   routes
 })
 
