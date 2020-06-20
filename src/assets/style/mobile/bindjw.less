@@ -1,25 +1,64 @@
-#bindjw{
-  .top{
-    .bind-logo{
-      width: 55vw;
-      border: 1px solid black;
-      height: 40vh;
-      min-height: 40vh;
-      margin: 7vh auto 3vh;
+#bindjw {
+  background-color: rgba(236, 236, 236, 1);
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  .bg{
+    position: absolute;
+    top: -10vw;
+    left: -12vw;
+    height: 40vw;
+    width: 120vw;
+    overflow: hidden;
+    opacity: .9;
+    z-index: 1;
+    background: url('../../image/mobile/bindjwBg.jpg');
+    background-size: 120vw;
+    transform: rotateZ(-10deg);
+  }
+  .top {
+    position: relative;
+    z-index: 2;
+    margin-top: 18vw;
+    .bind-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38vw;
+      width: 45vw;
+      //border: 1px solid black;
+      height: 45vw;
+      margin: auto;
+      background-color: rgba(236, 236, 236, 1);
+      border-radius: 4vw;
     }
-    .tip{
-      font-size: 14px;
+    .tip {
+      font-size: 3.2vw;
+      color: #888;
+    }
+    .binded{
+      margin-top: 5vw;
+      color: #000;
+      &>span:nth-of-type(1){
+        font-size: 3.8vw;
+        letter-spacing: 1px;
+      }
+      &>span:nth-of-type(2){
+        //vertical-align: middle;
+        font-size: 4.5vw;
+        font-weight: bold;
+      }
     }
   }
-  .info-wrapper{
+  .info-wrapper {
     width: 90vw;
     margin: auto;
-    .password-wrapper{
-      margin-top: 2vh;
+    .password-wrapper {
+      margin-top: 2vw;
     }
   }
-  .bind-btn{
-    margin-top: 3vh;
+  .bind-btn {
+    margin-top: 5vw;
     width: 90vw;
   }
 }

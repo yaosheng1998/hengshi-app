@@ -1,11 +1,16 @@
 <template>
   <div id="bindjw" v-if="isShow">
+    <div class="bg"></div>
     <div class="top">
-      <div class="bind-logo">
-        logo
+      <div class="bind-logo iconfont">
+        &#xe7bb;
       </div>
       <p class="tip">{{ isbindjw ? '您已经绑定教务网' :
         '您还未绑定教务网, 请输入用户名和密码进行绑定。' }}</p>
+      <div class="binded" v-if="isbindjw">
+        <span>当前绑定账号: </span>
+        <span>{{ userid }}</span>
+      </div>
     </div>
     <form class="info-wrapper" v-if="!isbindjw">
       <div class="userid-wrapper">
@@ -28,21 +33,29 @@
     <el-button :type="isbindjw ? 'danger' : 'primary'"
                class="bind-btn"
                @click="handleClick"
-    >{{ isbindjw ? '取消绑定' : '立即绑定' }}</el-button>
+    >{{ isbindjw ? '取消绑定' : '立即绑定' }}
+    </el-button>
   </div>
 </template>
 
 <script>
   export default {
     mounted() {
-      document.title = '绑定教务网'
       this.token = this.$route.params.token
-      // console.log('token:' + this.token)
       this.$store.dispatch('isLogin', {token: this.token}).then(res => {
-        return this.$axios.get('/wxfwh/isbindjw')
+        if(res.code === 'success'){
+          return this.$axios.get('/wxfwh/isbindjw')
+        } else {
+          return { code: -1 }
+        }
       }).then(res => {
         console.log(res)
-        this.isbindjw = res.code === 1
+        if(res.code === 1){
+          this.isbindjw = true
+          this.userid = res.userid
+        } else {
+          this.isbindjw = false
+        }
       })
     },
     data() {
@@ -60,42 +73,42 @@
     },
     methods: {
       handleClick() {
-        if(this.isbindjw){
+        if (this.isbindjw) {
           this.cancelBindjw()
         } else {
           this.bindjw()
         }
       },
+      /**
+       * 绑定教务网
+       */
       bindjw() {
-        return this.$axios.post('/wxfwh/bindjw', {
+        this.$axios.post('/wxfwh/bindjw', {
           "userid": this.userid,
           "password": this.password
         }).then(res => {
           console.log(res)
-          if(res.code === 1){
+          if (res.code === 1) {
             this.isbindjw = true
             this.$message.success(res.msg)
-            // this.$message({
-            //   duration: 1000000,
-            //   type: 'success',
-            //   message: res.msg
-            // })
+          } else {
+            this.$message.error(res.msg)
           }
         })
       },
+      /**
+       * 取消绑定教务网
+       */
       cancelBindjw() {
-        this.$axios.get('/wxfwh/cancel_bind_jw').then(res => {
-          console.log(res)
-          if(res.code === 1){
-            this.isbindjw = false
+        if(confirm('取消绑定教务网将会导致订阅服务失效，是否取消绑定？')){
+          this.$axios.get('/wxfwh/cancel_bind_jw').then(res => {
+            console.log(res)
+            if (res.code === 1) {
+              this.isbindjw = false
+            }
             this.$message.error(res.msg)
-            // this.$message({
-            //   duration: 1000000,
-            //   type: 'error',
-            //   message: res.msg
-            // })
-          }
-        })
+          })
+        }
       }
     }
   }

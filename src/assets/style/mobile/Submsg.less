@@ -1,0 +1,84 @@
+#submsg {
+  height: 100vh;
+  background-color: rgba(236, 236, 236, 1);
+  position: relative;
+  overflow: hidden;
+  .bg {
+    position: absolute;
+    top: -10vw;
+    left: -12vw;
+    height: 40vw;
+    width: 120vw;
+    overflow: hidden;
+    opacity: .9;
+    z-index: 1;
+    background: url('../../image/mobile/bindjwBg.jpg');
+    background-size: 120vw;
+    transform: rotateZ(-10deg);
+  }
+  .top {
+    position: relative;
+    margin-top: 18vw;
+    z-index: 2;
+    .submsg-img {
+      border-radius: 1vw;
+      position: relative;
+      height: 80vw;
+      width: 60vw;
+      background-color: #ffffff;
+      margin: auto;
+    }
+    .sub-content {
+      z-index: 3;
+      position: absolute;
+      top: 2vw;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: left;
+      & > p:nth-of-type(1) {
+        font-weight: bold;
+        font-size: 4.8vw;
+      }
+      & > p:nth-of-type(2) {
+        font-size: 3.8vw;
+        padding-top: 2vw;
+      }
+      .dis {
+        padding-top: 1.5vw;
+        p {
+          font-size: 3.8vw;
+          i {
+            color: #ff4400;
+          }
+        }
+      }
+      .state {
+        p {
+          font-size: 3.8vw;
+          i {
+            font-weight: bold;
+            color: rgba(245, 108, 108, 1);
+            &.active {
+              color: rgba(103, 194, 58, 1);
+            }
+          }
+        }
+      }
+    }
+  }
+  .sub-btn {
+    margin-top: 8vw;
+    width: 55vw;
+  }
+  .options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .open-btn,
+    .close-btn{
+      width: 55vw;
+      margin-left: 0;
+      margin-top: 4vw;
+    }
+  }
+}

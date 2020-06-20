@@ -5,17 +5,10 @@ import axios from '../http'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    token: ''
-  },
-  mutations: {
-    setToken() {
-      console.log(this)
-    }
-  },
+  state: {},
+  mutations: {},
   actions: {
     async isLogin(state, payload) {
-      console.log(payload)
       // if(!payload.token){
       //   return 'fail'
       // }
@@ -23,7 +16,7 @@ export default new Vuex.Store({
       if(isLogin.code === 1){
         return 'success'
       } else{
-        let login = await axios.get('/wxfwh/login/' + payload.token)
+        let login = await axios.get(`/wxfwh/login/${payload.token}`)
         if(login.code === 1){
           return 'success'
         }

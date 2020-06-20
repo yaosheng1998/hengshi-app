@@ -1,6 +1,9 @@
 body {
-  font-family: helvetica;
   margin: 0;
+}
+
+i{
+  font-style: normal;
 }
 
 body * {
@@ -16,4 +19,21 @@ a, input, button {
 button, input {
   -webkit-appearance: none;
   border-radius: 0;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 1894112 */
+  src: url('//at.alicdn.com/t/font_1894112_wa0vip1sasc.eot');
+  src: url('//at.alicdn.com/t/font_1894112_wa0vip1sasc.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1894112_wa0vip1sasc.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1894112_wa0vip1sasc.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1894112_wa0vip1sasc.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1894112_wa0vip1sasc.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
