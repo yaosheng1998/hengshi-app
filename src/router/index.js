@@ -36,12 +36,39 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: () => import('../views/Admin'),
+    component: () => import('../views/admin/Admin'),
+    children: [
+      {
+        path: '/admin/edu_user',
+        name: 'edu_user',
+        component: () => import('../views/admin/EduUser')
+      },
+      {
+        path: '/admin/wx_user',
+        name: 'wx_user',
+        component: () => import('../views/admin/WxUser')
+      },
+      {
+        path: '/admin/curriculum',
+        name: 'curriculum',
+        component: () => import('../views/admin/Curriculum')
+      },
+      {
+        path: '/admin/bill',
+        name: 'bill',
+        component: () => import('../views/admin/Bill')
+      },
+      {
+        path: '/admin/config',
+        name: 'config',
+        component: () => import('../views/admin/Config')
+      }
+    ]
   },
   {
     path: '/admin/login/:generate_code',
     name: 'admin_login',
-    component: () => import('../views/AdminLogin')
+    component: () => import('../views/admin/AdminLogin')
   }
 ]
 

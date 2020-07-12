@@ -5,10 +5,24 @@ import axios from '../http'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    isAdminLogin: false,
+    menuIndex: '1',
+    updateCurrProgress: 100,
+  },
+  mutations: {
+    setAdminLogin(state, flag) {
+      state.isAdminLogin = flag
+    },
+    setMenuIndex(state, index) {
+      state.menuIndex = index
+    },
+    setUpdateCurrProgress(state, progress) {
+      state.updateCurrProgress = progress
+    }
+  },
   actions: {
-    async isLogin(state, payload) {
+    async isFwhLogin(state, payload) {
       // if(!payload.token){
       //   return 'fail'
       // }

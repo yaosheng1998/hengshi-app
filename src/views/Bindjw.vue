@@ -42,14 +42,13 @@
   export default {
     mounted() {
       this.token = this.$route.params.token
-      this.$store.dispatch('isLogin', {token: this.token}).then(res => {
-        if(res.code === 'success'){
+      this.$store.dispatch('isFwhLogin', {token: this.token}).then(res => {
+        if(res === 'success'){
           return this.$axios.get('/wxfwh/isbindjw')
         } else {
           return { code: -1 }
         }
       }).then(res => {
-        console.log(res)
         if(res.code === 1){
           this.isbindjw = true
           this.userid = res.userid
@@ -72,6 +71,9 @@
       }
     },
     methods: {
+      /**
+       * 绑定操作
+       **/
       handleClick() {
         if (this.isbindjw) {
           this.cancelBindjw()
@@ -87,13 +89,14 @@
           "userid": this.userid,
           "password": this.password
         }).then(res => {
-          console.log(res)
           if (res.code === 1) {
             this.isbindjw = true
             this.$message.success(res.msg)
           } else {
             this.$message.error(res.msg)
           }
+        }, error => {
+          alert(error)
         })
       },
       /**
@@ -102,7 +105,6 @@
       cancelBindjw() {
         if(confirm('取消绑定教务网将会导致订阅服务失效，是否取消绑定？')){
           this.$axios.get('/wxfwh/cancel_bind_jw').then(res => {
-            console.log(res)
             if (res.code === 1) {
               this.isbindjw = false
             }
@@ -115,6 +117,6 @@
 </script>
 
 <style lang="less">
-  @import "../assets/style/mobile/reset.css";
+  @import "../assets/style/reset.css";
   @import "../assets/style/mobile/bindjw";
 </style>

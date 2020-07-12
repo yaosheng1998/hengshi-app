@@ -7,6 +7,7 @@ import md5 from 'js-md5'
 import tools from './assets/util/tools'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'default-passive-events';
 
 Vue.use(ElementUI)
 

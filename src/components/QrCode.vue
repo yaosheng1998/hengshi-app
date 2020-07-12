@@ -10,14 +10,6 @@
       qrUrl: {
         type: String,
         required: true
-      },
-      qrWidth: {
-        type: Number,
-        default: 200
-      },
-      qrHeight: {
-        type: Number,
-        default: 200
       }
     },
     mounted() {
@@ -28,8 +20,8 @@
       createQrCode() {
         let qrcode = new QRCode(this.$refs.qrCodeUrl, {
           text: this.qrUrl, // 需要转换为二维码的内容
-          width: this.qrWidth,
-          height: this.qrHeight,
+          width: 200,
+          height: 200,
           colorDark: '#000000',
           colorLight: '#ffffff',
           correctLevel: QRCode.CorrectLevel.M
@@ -41,7 +33,10 @@
 
 <style lang="less">
   .qrcode {
-    padding: 5px;
+    display: inline-block;
+    padding: 10px;
     background-color: #fff;
+    /*width: 200px;*/
+    /*height: 200px;*/
   }
 </style>

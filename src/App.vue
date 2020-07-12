@@ -15,9 +15,21 @@
   }
 </script>
 
-<style>
+<style lang="less">
+  @import "./assets/style/reset.css";
+  html, body {
+    height: 100%;
+    @media only screen and (max-width: 768px) {
+      .el-message {
+        width: 90vw;
+        min-width: 70vw;
+      }
+    }
+  }
+
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
+    height: 100%;
   }
 
   #nav {
@@ -33,8 +45,4 @@
     color: #42b983;
   }
 
-  .el-message{
-    width: 90vw !important;
-    min-width: 70vw !important;
-  }
 </style>

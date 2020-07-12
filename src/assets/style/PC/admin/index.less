@@ -1,0 +1,61 @@
+#admin{
+  height: 100%;
+  .container{
+    height: 100%;
+    .tac{
+      height: 100%;
+      width: 18%;
+      position: fixed;
+      .menu-wrapper{
+        height: 100%;
+        .menu{
+          height: 100%;
+          .title{
+            height: 60px;
+            border-bottom: 1px solid rgba(255, 2555, 255, .1);
+            font-size: 20px;
+            letter-spacing: 4px;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .is-active{
+            background-color: rgba(67,74,80) !important;
+          }
+        }
+      }
+    }
+    .main{
+      box-sizing: border-box;
+      margin-left: 18%;
+      width: 82%;
+      height: 100%;
+      //display: grid;
+      //grid-template-rows: 60px;
+      .nav{
+        position: relative;
+        height: 61px;
+        border-bottom: 1px solid #ccc;
+        box-shadow: 0 -1px 7px #888;
+        box-sizing: border-box;
+        .admin-name{
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 50px;
+          font-size: 14px;
+        }
+      }
+      .content{
+        padding: 14px;
+        background-color: rgba(0, 0, 0, .1);
+        min-height: calc(100% - 61px);
+        box-sizing: border-box;
+        .current{
+          //background-color: #fff;
+        }
+      }
+    }
+  }
+}
